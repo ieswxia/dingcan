@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2014 11:44:43 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.example.dingcan.CustomerOrders" table="customer_orders" catalog="dingcan">
+        <id name="customerOrderId" type="long">
+            <column name="customer_order_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="customerOrderCustomerId" type="java.lang.Integer">
+            <column name="customer_order_customer_id" />
+        </property>
+        <property name="customerOrderCustomerAddress" type="string">
+            <column name="customer_order_customer_address" length="500" />
+        </property>
+        <property name="customerOrderCustomerTel" type="string">
+            <column name="customer_order_customer_tel" length="50" />
+        </property>
+        <property name="customerOrderStatus" type="java.lang.Character">
+            <column name="customer_order_status" length="1" />
+        </property>
+        <property name="customerOrderTime" type="timestamp">
+            <column name="customer_order_time" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

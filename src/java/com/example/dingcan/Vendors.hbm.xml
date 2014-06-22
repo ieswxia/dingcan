@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2014 11:44:43 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.example.dingcan.Vendors" table="vendors" catalog="dingcan">
+        <id name="vendorId" type="int">
+            <column name="vendor_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="restaurantAddress" type="string">
+            <column name="restaurant_address" length="500" />
+        </property>
+        <property name="restaurantTel" type="string">
+            <column name="restaurant_Tel" length="50" />
+        </property>
+        <property name="restaurantName" type="string">
+            <column name="restaurant_name" length="200" />
+        </property>
+        <property name="restaurantOptionalTel" type="string">
+            <column name="restaurant_optional_Tel" length="50" />
+        </property>
+        <property name="restaurantOptionalTel2" type="string">
+            <column name="restaurant_optional_Tel_2" length="45" />
+        </property>
+        <property name="restaurantOptionalTel3" type="string">
+            <column name="restaurant_optional_Tel_3" length="45" />
+        </property>
+        <property name="restaurantOptionalTel4" type="string">
+            <column name="restaurant_optional_Tel_4" length="45" />
+        </property>
+        <property name="restaurantOptionalTel5" type="string">
+            <column name="restaurant_optional_Tel_5" length="45" />
+        </property>
+        <property name="latitude" type="java.lang.Double">
+            <column name="latitude" precision="22" scale="0" />
+        </property>
+        <property name="longitude" type="java.lang.Double">
+            <column name="longitude" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
