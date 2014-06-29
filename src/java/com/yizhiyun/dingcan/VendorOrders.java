@@ -1,4 +1,4 @@
-package com.example.dingcan;
+package com.yizhiyun.dingcan;
 // Generated Jun 11, 2014 11:44:43 PM by Hibernate Tools 3.6.0
 
 

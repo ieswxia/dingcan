@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.example.test;
+package com.yizhiyun.test;
 
-import com.example.dingcan.*;
+import com.yizhiyun.dingcan.Vendors;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;

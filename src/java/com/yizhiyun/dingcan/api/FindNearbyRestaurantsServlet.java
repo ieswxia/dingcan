@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.dingcan.api;
+package com.yizhiyun.dingcan.api;
 
-import com.example.dingcan.Vendors;
-import com.example.dingcan.HibernateSessionFactory;
+import com.yizhiyun.dingcan.Vendors;
+import com.yizhiyun.dingcan.HibernateSessionFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;

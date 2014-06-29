@@ -1,4 +1,4 @@
-package com.example.dingcan.api;
+package com.yizhiyun.dingcan.api;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

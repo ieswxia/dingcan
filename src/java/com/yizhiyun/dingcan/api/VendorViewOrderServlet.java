@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.example.dingcan.api;
+package com.yizhiyun.dingcan.api;
 
 import java.io.IOException;
 import java.io.PrintWriter;

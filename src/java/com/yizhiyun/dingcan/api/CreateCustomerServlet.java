@@ -1,4 +1,4 @@
-package com.example.dingcan.api;
+package com.yizhiyun.dingcan.api;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.dingcan.Customers;
+import com.yizhiyun.dingcan.Customers;
 /**
  *
  * @author xiashiwen

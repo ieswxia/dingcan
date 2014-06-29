@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.example.dingcan.api;
+package com.yizhiyun.dingcan.api;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.dingcan.HibernateSessionFactory;
+import com.yizhiyun.dingcan.HibernateSessionFactory;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -21,7 +21,7 @@ import net.sf.json.JSONObject;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 
-import com.example.dingcan.Food;
+import com.yizhiyun.dingcan.Food;
 import org.hibernate.Transaction;
 import org.hibernate.Query;
 
