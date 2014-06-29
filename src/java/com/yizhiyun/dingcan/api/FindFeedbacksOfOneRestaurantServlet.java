@@ -6,12 +6,20 @@ package com.yizhiyun.dingcan.api;
  * and open the template in the editor.
  */
 
+import com.yizhiyun.dingcan.HibernateSessionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.json.JSONObject;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -32,11 +40,57 @@ public class FindFeedbacksOfOneRestaurantServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
+        
+        String vendorIdString = request.getParameter("vendorId");
+        if(null == vendorIdString || vendorIdString.length() < 1 ) {
+            Map map = new HashMap();
+            map.put("error_code", "error_parameter_miss");
+
+            JSONObject jsonObject = JSONObject.fromObject(map);
+            PrintWriter out = response.getWriter();
+            try {
+                out.print(jsonObject.toString());
+            } finally {
+                out.close();
+            }
+        }else{
+            int vendorId = Integer.parseInt(vendorIdString);
+            Map map = new HashMap();
             
-        } finally {
-            out.close();
+            boolean isError = false;
+            
+            SessionFactory sessff = HibernateSessionFactory.sharedSessionFactory();
+            if(null == sessff){
+                isError = true;
+            }else{
+                Session session = sessff.openSession();
+//                Transaction transa = session.beginTransaction();
+                Query query = session.createQuery("from Feedbacks as F where F.vendorId=?");
+                query.setInteger(0, vendorId);
+                List foods = query.list();
+//                transa.rollback();
+//                transa.commit();
+                if(null == foods){
+                    isError = true;
+                }else{
+                    map.put("foods", foods);
+                }
+                session.close();
+            }
+            if(true == isError) {
+                map.put("error_code", "error_query_false");
+            }else{
+                map.put("error_code", "error_success");
+            }
+            
+            
+            JSONObject jsonObject = JSONObject.fromObject(map);
+            PrintWriter out = response.getWriter();
+            try {
+                out.print(jsonObject.toString());
+            } finally {
+                out.close();
+            }
         }
     }
 

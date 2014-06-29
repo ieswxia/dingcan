@@ -2,35 +2,35 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>FindNearbyRestaurantsServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.FindNearbyRestaurantsServlet</servlet-class>
+        <servlet-class>com.yizhiyun.dingcan.api.FindNearbyRestaurantsServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FindFoodOfOneRestaurantServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.FindFoodOfOneRestaurantServlet</servlet-class>
+        <servlet-class>com.yizhiyun.dingcan.api.FindFoodOfOneRestaurantServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FindFeedbacksOfOneRestaurantServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.FindFeedbacksOfOneRestaurantServlet</servlet-class>
+        <servlet-class>com.yizhiyun.dingcan.api.FindFeedbacksOfOneRestaurantServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CustomerMakeOrderServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.CustomerMakeOrderServlet</servlet-class>
+        <servlet-class>com.yizhiyun.dingcan.api.CustomerMakeOrderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateCustomerServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.CreateCustomerServlet</servlet-class>
+        <servlet-class>com.yizhiyun.dingcan.api.CreateCustomerServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateVendorServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.CreateVendorServlet</servlet-class>
+        <servlet-class>com.yizhiyun.dingcan.api.CreateVendorServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>VendorViewOrderServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.VendorViewOrderServlet</servlet-class>
+        <servlet-class>com.yizhiyun.dingcan.api.VendorViewOrderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>VendorEditFoodsServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.VendorEditFoodsServlet</servlet-class>
+        <servlet-class>com.yizhiyun.dingcan.api.VendorEditFoodsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FindNearbyRestaurantsServlet</servlet-name>
