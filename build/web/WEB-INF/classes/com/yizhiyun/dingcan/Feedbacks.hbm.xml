@@ -5,7 +5,7 @@
   <class catalog="dingcan" name="com.yizhiyun.dingcan.Feedbacks" table="feedbacks">
     <id name="feedbackId" type="long">
       <column name="feedback_id"/>
-      <generator class="assigned"/>
+      <generator class="increment"/>
     </id>
     <property name="vendorId" type="java.lang.Integer">
       <column name="vendor_id"/>

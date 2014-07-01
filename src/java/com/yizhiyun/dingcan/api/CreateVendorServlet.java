@@ -32,6 +32,7 @@ public class CreateVendorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
         PrintWriter out = response.getWriter();
         try {
             

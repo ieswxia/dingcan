@@ -11,7 +11,7 @@ public class Customers  implements java.io.Serializable {
 
      private int customerId;
      private String customerAddress;
-     private String customerTel;
+     private String customerTel;//逻辑上是唯一标示符
      private String customerName;
      private String customerOptionalTel;
      private String customerOptionalTel2;

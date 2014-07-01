@@ -5,7 +5,7 @@
   <class catalog="dingcan" name="com.yizhiyun.dingcan.Vendors" table="vendors">
     <id name="vendorId" type="int">
       <column name="vendor_id"/>
-      <generator class="assigned"/>
+      <generator class="increment"/>
     </id>
     <property name="restaurantAddress" type="string">
       <column length="500" name="restaurant_address"/>

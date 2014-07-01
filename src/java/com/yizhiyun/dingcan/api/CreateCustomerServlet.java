@@ -5,7 +5,6 @@ package com.yizhiyun.dingcan.api;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,6 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yizhiyun.dingcan.Customers;
+import com.yizhiyun.dingcan.HibernateSessionFactory;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import net.sf.json.JSONObject;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author xiashiwen
@@ -33,9 +42,64 @@ public class CreateCustomerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
+
+        Map map = new HashMap();
+
+        String customerInfoString = request.getParameter("customerInfo");
+        if (null == customerInfoString || customerInfoString.length() < 1) {
+
+            map.put("error_code", "error_parameter_miss");
+
+        } else {
+            JSONObject customer = JSONObject.fromObject(customerInfoString);
+            if (null == customer) {
+                map.put("error_code", "error_parameter_parse_error");
+            } else {
+                Customers cust = (Customers)JSONObject.toBean(customer, Customers.class);
+                
+                String telephone = cust.getCustomerTel();
+
+                boolean isError = false;
+
+                SessionFactory sessff = HibernateSessionFactory.sharedSessionFactory();
+                if (null == sessff) {
+                    isError = true;
+                } else {
+                    Session session = sessff.openSession();
+//                    Transaction transa = session.beginTransaction();
+                    Query query = session.createQuery("from Customers as C where C.customerTel=?");
+                    query.setString(0, telephone);
+                    List customersss = query.list();
+//                transa.rollback();
+//                transa.commit();
+                    if(null == customersss || customersss.size() < 1) {
+                        session.save(cust);
+                        session.flush();
+                        map.put("execute_save", "true");
+                    }
+                    
+                    customersss = query.list();
+                    
+                    if (null == customersss) {
+                        isError = true;
+                    } else {
+                        map.put("customersss", customersss);
+                    }
+                    session.close();
+                }
+                if (true == isError) {
+                    map.put("error_code", "error_query_false");
+                } else {
+                    map.put("error_code", "error_success");
+                }
+            }
+
+        }
+
+        JSONObject jsonObject = JSONObject.fromObject(map);
         PrintWriter out = response.getWriter();
         try {
-            
+            out.print(jsonObject.toString());
         } finally {
             out.close();
         }

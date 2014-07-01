@@ -5,7 +5,7 @@
   <class catalog="dingcan" name="com.yizhiyun.dingcan.VendorOrders" table="vendor_orders">
     <id name="vendorOrderId" type="int">
       <column name="vendor_order_id"/>
-      <generator class="assigned"/>
+      <generator class="increment"/>
     </id>
     <property name="vendorOrderVendorId" type="java.lang.Integer">
       <column name="vendor_order_vendor_id"/>
