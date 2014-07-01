@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<!--外呼管理 -->
+		<typeAlias type="com.yizhiyun.dingcan.model.CustomerOrder" alias="customerOrder" />
+		<typeAlias type="com.yizhiyun.dingcan.model.Customer" alias="customer" />
+		<typeAlias type="com.yizhiyun.dingcan.model.Feedback" alias="feedback" />
+		<typeAlias type="com.yizhiyun.dingcan.model.Food" alias="food" />
+		<typeAlias type="com.yizhiyun.dingcan.model.OrderItem" alias="orderItem" />
+		<typeAlias type="com.yizhiyun.dingcan.model.VendorOrder" alias="vendorOrder" />
+		<typeAlias type="com.yizhiyun.dingcan.model.Vendor" alias="vendor" />
+	</typeAliases>
+</configuration>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CustomerMapper">
+	<resultMap id="customer" type="customer">
+		<id column="customer_id" property="customerId" />
+		<result column="customer_address" property="customerAddress" />
+		<result column="customer_Tel" property="customerTel" />
+                <result column="customer_name" property="customerName" />
+                <result column="customer_optional_Tel" property="customerOptionalTel" />
+                <result column="customer_optional_Tel_2" property="customerOptionalTel2" />
+                <result column="customer_optional_Tel_3" property="customerOptionalTel3" />
+	</resultMap>
+        
+        <insert id="saveCustomer" parameterType="customer" useGeneratedKeys="true" keyProperty="customerId">
+            INSERT INTO dingcan.customers(customer_address, customer_Tel, customer_name, customer_optional_Tel, customer_optional_Tel_2, customer_optional_Tel_3)
+            VALUES ( #{customerAddress}, #{customerTel}, #{customerName}, #{customerOptionalTel}, #{customerOptionalTel2}, #{customerOptionalTel3})
+        </insert>
+        <!--
+	<resultMap id="initVar" type="initVar">
+		<id column="VAR_ID" property="id" />
+		<result column="VAR_NAME" property="name" />
+		<result column="VAR_TYPE" property="type" />
+		<result column="VALUE" property="valueName" />
+		<result column="DEFAULT_VALUE" property="defualt" />
+	</resultMap>
+
+	<resultMap id="node" type="node">
+		<id column="NODE_ID" property="id" />
+		<result column="NODE_NAME" property="name" />
+		<result column="NODE_TYPE" property="type" />
+		<result column="FLOW_ID" property="flowId" />
+		<result column="FUNCTION" property="function" />
+		<collection property="paths" column="SRC_NODE_ID"
+			resultMap="path"></collection>
+	</resultMap>
+
+	<resultMap id="path" type="path">
+		<id column="PATH_ID" property="id" />
+		<result column="PATH_NAME" property="name" />
+		<result column="PRIORITY" property="priority" />
+		<result column="DEST_NODE_ID" property="dest" />
+		<result column="SRC_NODE_ID" property="src" />
+		<collection property="conditonGroups" column="PATH_ID"
+			resultMap="conditionGroup"></collection>
+	</resultMap>
+
+	<resultMap id="conditionGroup" type="conditionGroup">
+		<id column="GROUP_ID" property="id" />
+		<collection property="conditions" column="GROUP_ID"
+			resultMap="condition"></collection>
+	</resultMap>
+
+	<resultMap id="condition" type="condition">
+		<id column="CONDITION_ID" property="id" />
+		<result column="COND_TYPE" property="type" />
+		<result column="OPERATOR" property="operator" />
+		<result column="LEFT_IS_VAR" property="leftVar" />
+		<result column="LEFT_VALUE" property="leftValue" />
+		<result column="RIGHT_IS_VAR" property="rightVar" />
+		<result column="RIGHT_VALUE" property="rightValue" />
+	</resultMap>
+
+	<resultMap id="param" type="param">
+		<id column="PARAM_ID" property="id" />
+		<result column="NODE_ID" property="nodeId" />
+		<result column="PARAM_NAME" property="name" />
+		<result column="VALUE" property="value" />
+		<result column="ISVARIABLE" property="variable" />
+	</resultMap>
+
+
+
+	<select id="getFlows" resultMap="flow">
+		<![CDATA[ SELECT B.ID AS FLOW_ID, B.NAME AS FLOW_NAME, B.MAIN_NODE_ID AS ENTRY_NODE, E.ID AS VAR_ID, E.NAME AS VAR_NAME, E.PARAM_TYPE AS VAR_TYPE, E.VALUE, E.DEFAULT_VALUE  FROM FLOW_BASE B LEFT JOIN FLOW_ENTRY_PARAM E ON B.ID = E.FLOW_ID WHERE B.VERSION_ID IN (SELECT V.ID FROM FLOW_VERSION V WHERE V.STATUS = '3' OR V.STATUS = '4') ]]>
+	</select>
+
+	<select id="getNodes" resultMap="node">
+		<![CDATA[
+		SELECT N.ID AS NODE_ID, N.NAME AS NODE_NAME, N.NODE_TYPE, N.FLOW_ID, N.FUNCTION, P.ID AS PATH_ID, P.NAME AS PATH_NAME, P.PRIORITY, P.SRC_NODE_ID, P.DEST_NODE_ID, CG.ID AS GROUP_ID,
+		C.ID AS CONDITION_ID, C.COND_TYPE, C.OPERATOR, C.LEFT_IS_VAR, C.LEFT_VALUE, C.RIGHT_IS_VAR, C.RIGHT_VALUE
+		FROM FLOW_NODE N LEFT JOIN FLOW_PATH P ON P.SRC_NODE_ID = N.ID LEFT JOIN FLOW_CONDITION_GROUP CG ON P.ID = CG.PATH_ID LEFT JOIN FLOW_CONDITION C ON C.COND_GROUP_ID = CG.ID
+		WHERE N.FLOW_ID IN (SELECT B.ID FROM FLOW_BASE B WHERE B.VERSION_ID IN (SELECT V.ID FROM FLOW_VERSION V WHERE V.STATUS = '3' OR V.STATUS = '4'))
+		]]>
+	</select>
+
+	<select id="getParams" resultMap="param">
+		<![CDATA[
+		SELECT P.ID AS PARAM_ID, P.NODE_ID, P.NAME AS PARAM_NAME, P.VALUE, P.ISVARIABLE
+		FROM FLOW_NODE_PARAM P 
+		WHERE P.FLOW_ID IN (SELECT B.ID FROM FLOW_BASE B WHERE B.VERSION_ID IN (SELECT V.ID FROM FLOW_VERSION V WHERE V.STATUS = '3' OR V.STATUS = '4'))
+		]]>
+	</select>
+        -->
+</mapper>

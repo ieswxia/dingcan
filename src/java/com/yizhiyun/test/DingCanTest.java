@@ -5,12 +5,10 @@
  */
 package com.yizhiyun.test;
 
-import com.yizhiyun.dingcan.Vendors;
-import com.yizhiyun.dingcan.Customers;
-import org.hibernate.SessionFactory;
-import org.hibernate.Session;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.Query;
+import com.yizhiyun.dingcan.model.Customer;
+import com.yizhiyun.dingcan.service.CustomerService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -19,33 +17,9 @@ import org.hibernate.Query;
 public class DingCanTest {
 
     public static void main(String args[]) {
-        Vendors vendor = new Vendors();
-        vendor.setVendorId(1);
-        vendor.setLatitude(39.32222);
-        vendor.setLongitude(110.121212);
-
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-//        Session session = sessionFactory.getCurrentSession();
-//        session.beginTransaction();
-//        Vendors firstVendor = (Vendors)session.get(Vendors.class, 0);
-//        Query selectUnique = session.createQuery("");
-//        if(null != firstVendor) {
-//            firstVendor.setRestaurantName("剑客333");
-//            System.out.println("first vendor restaurant name :"+firstVendor.getRestaurantName());
-//            firstVendor.setRestaurantAddress("china beijing .");
-//            session.update(firstVendor);
-//        }
-//        session.getTransaction().commit();
-//        session.close();
-//        session.flush();
-//        sessionFactory.close();
-        Session session = sessionFactory.openSession();
-        Customers cust = new Customers();
-        cust.setCustomerAddress("sdfsfddsf");
-        cust.setCustomerName("我我我我");
-        cust.setCustomerTel("111111111");
-        session.save(cust);
-        session.flush();
-        session.close();
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:/applicationContext-service.xml");
+        CustomerService customerService = context.getBean(CustomerService.class);
+        Customer customer = new Customer(0, "河南省郑州市郑大一附院", "178238324234", "李先生", "178238324234", "178238324234", "178238324234");
+        customerService.saveCustomer(customer);
     }
 }
