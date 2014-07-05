@@ -5,83 +5,26 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath*:/application-servlet.xml</param-value>
+            <param-value>classpath*:/applicationContext-servlet.xml</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>springServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>FindNearbyRestaurantsServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.model.FindNearbyRestaurantsServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FindFoodOfOneRestaurantServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.model.FindFoodOfOneRestaurantServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FindFeedbacksOfOneRestaurantServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.model.FindFeedbacksOfOneRestaurantServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CustomerMakeOrderServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.model.CustomerMakeOrderServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CreateCustomerServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.model.CreateCustomerServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CreateVendorServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.model.CreateVendorServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>VendorViewOrderServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.model.VendorViewOrderServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>VendorEditFoodsServlet</servlet-name>
-        <servlet-class>com.yizhiyun.dingcan.model.VendorEditFoodsServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FindNearbyRestaurantsServlet</servlet-name>
-        <url-pattern>/FindNearbyRestaurantsServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FindFoodOfOneRestaurantServlet</servlet-name>
-        <url-pattern>/FindFoodOfOneRestaurantServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FindFeedbacksOfOneRestaurantServlet</servlet-name>
-        <url-pattern>/FindFeedbacksOfOneRestaurantServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CustomerMakeOrderServlet</servlet-name>
-        <url-pattern>/CustomerMakeOrderServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CreateCustomerServlet</servlet-name>
-        <url-pattern>/CreateCustomerServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CreateVendorServlet</servlet-name>
-        <url-pattern>/CreateVendorServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>VendorViewOrderServlet</servlet-name>
-        <url-pattern>/VendorViewOrderServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>VendorEditFoodsServlet</servlet-name>
-        <url-pattern>/VendorEditFoodsServlet</url-pattern>
-    </servlet-mapping>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath*:/applicationContext-service.xml
+        </param-value>
+    </context-param>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
 </web-app>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="VendorMapper">
+    <resultMap id="vendor" type="vendor">
+        <id column="vendor_id" property="vendorId" />
+        <result column="restaurant_address" property="restaurantAddress" />
+        <result column="restaurant_Tel" property="restaurantTel" />
+        <result column="restaurant_name" property="restaurantName" />
+        <result column="restaurant_optional_Tel" property="restaurantOptionalTel" />
+        <result column="restaurant_optional_Tel_2" property="restaurantOptionalTel2" />
+        <result column="restaurant_optional_Tel_3" property="restaurantOptionalTel3" />
+        <result column="restaurant_optional_Tel_4" property="restaurantOptionalTel4" />
+        <result column="restaurant_optional_Tel_5" property="restaurantOptionalTel5" />
+        <result column="latitude" property="latitude" />
+        <result column="longitude" property="longitude" />
+    </resultMap>
+        
+    <insert id="saveVendor" parameterType="vendor" useGeneratedKeys="true" keyProperty="vendorId">
+        INSERT INTO vendors (restaurant_address, restaurant_Tel, restaurant_name, restaurant_optional_Tel, restaurant_optional_Tel_2, restaurant_optional_Tel_3, restaurant_optional_Tel_4, restaurant_optional_Tel_5, latitude, longitude)
+        VALUES(#{restaurantAddress}, #{restaurantTel}, #{restaurantName}, #{restaurantOptionalTel}, #{restaurantOptionalTel2}, #{restaurantOptionalTel3}, #{restaurantOptionalTel4}, #{restaurantOptionalTel5}, #{latitude}, #{longitude})
+    </insert>
+        
+    <select id="getVendorsByTel" parameterType="java.lang.String" resultMap="vendor">
+        SELECT * FROM vendors WHERE restaurant_Tel = #{telNo}
+    </select>
+    
+    <select id="getVendorsByCoordinate" parameterType="map" resultMap="vendor">
+        SELECT * FROM vendors WHERE latitude BETWEEN #{minLatitude} AND #{maxLatitude} AND longitude BETWEEN #{minLongitude} AND #{maxLongitude};
+    </select>
+ 
+</mapper>

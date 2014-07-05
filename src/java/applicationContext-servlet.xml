@@ -18,6 +18,9 @@
 	default-autowire="byName">
 	<!--启动Spring MVC的注解功能 -->
 	<mvc:annotation-driven />
+        
+        <context:component-scan
+		base-package="com.yizhiyun.dingcan.controller" />
 
 	<!--静态资源 -->
 	<mvc:resources location="/static/" mapping="/static/**" />
@@ -45,6 +48,5 @@
 		</property>
 	</bean>
 
-	<context:component-scan
-		base-package="com.yizhiyun.dingcan.controller" />
+	
 </beans>

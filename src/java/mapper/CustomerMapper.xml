@@ -15,6 +15,10 @@
             INSERT INTO dingcan.customers(customer_address, customer_Tel, customer_name, customer_optional_Tel, customer_optional_Tel_2, customer_optional_Tel_3)
             VALUES ( #{customerAddress}, #{customerTel}, #{customerName}, #{customerOptionalTel}, #{customerOptionalTel2}, #{customerOptionalTel3})
         </insert>
+        
+        <select id="getCustomersByTel" parameterType="java.lang.String" resultMap="customer">
+            SELECT * FROM dingcan.customers WHERE customer_Tel = #{telNo}
+        </select>
         <!--
 	<resultMap id="initVar" type="initVar">
 		<id column="VAR_ID" property="id" />
