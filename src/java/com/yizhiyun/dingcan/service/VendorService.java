@@ -7,7 +7,6 @@
 package com.yizhiyun.dingcan.service;
 
 import com.yizhiyun.dingcan.dao.BaseDao;
-import com.yizhiyun.dingcan.model.Customer;
 import com.yizhiyun.dingcan.model.Vendor;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +32,7 @@ public class VendorService {
         return baseDao.getList("VendorMapper.getVendorsByTel", telNo);
     }
 
-    public List<Vendor> getVendorsByCoordinate(float minLatitude, float maxLatitude, float minLongitude, float maxLongitude) {
+    public List<Vendor> getVendorsByCoordinate(double minLatitude, double maxLatitude, double minLongitude, double maxLongitude) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("minLatitude", minLatitude);
         params.put("minLongitude", minLongitude);
