@@ -52,7 +52,7 @@ public class MainController {
 	@Autowired
 	private OrderService orderService;
 
-	private final Gson gson = new Gson();
+	private Gson gson = new Gson();
 
 	@RequestMapping("/test")
 	public @ResponseBody
